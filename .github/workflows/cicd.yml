@@ -28,6 +28,7 @@ jobs:
     - name: Trivy FS Scan
       run: |
         trivy fs --format table -o trivy-fs-report.html .
+
     - name: SonarQube Scan
       uses: sonarsource/sonarqube-scan-action@master
       env:
@@ -55,10 +56,12 @@ jobs:
 
     - name: Build Docker Image
       run: |
-        docker build -t ernest633/boardgame:latest .
+        docker build -t adijaiswal/boardgame:latest .
+
     - name: Trivy Image Scan
       run: |
         trivy image --format table -o trivy-image-report.html adijaiswal/board:latest
+
     - name: Login to Docker Hub
       uses: docker/login-action@v3
       with:
@@ -76,3 +79,5 @@ jobs:
     - run: |
           kubectl apply -f deployment-service.yaml -n webapps
           kubectl get svc -n webapps
+
+    
