@@ -1,3 +1,7 @@
+# CICD Pipeline for Boardgame
+# @Author Ernest Nyarko
+# @Created June 14, 2024
+
 name: CICD Pipeline
 
 on:
@@ -10,7 +14,8 @@ jobs:
 
     steps:
       # Checkout Code
-      - uses: actions/checkout@v3
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
       # Set up JDK 17
       - name: Set up JDK 17
@@ -82,7 +87,7 @@ jobs:
       - name: Push Docker Image
         run: docker push ernest633/boardgame:latest
 
-      # Deploy with Kubectl
+      # Kubectl Action
       - name: Kubectl Action
         uses: tale/kubectl-action@v1
         with:
