@@ -70,7 +70,9 @@ jobs:
       - name: Push Docker Image
         run: |
           docker push ernest633/boardgame:latest
-
+      - name: Install Amplify CLI
+        run: |
+          npm install -g @aws-amplify/cli
       - name: Pull Amplify project for main environment
         if: github.ref == 'refs/heads/main'
         run: |
