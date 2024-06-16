@@ -70,6 +70,13 @@ jobs:
       - name: Push Docker Image
         run: |
           docker push ernest633/boardgame:latest
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install Amplify CLI
+        run: npm install -g @aws-amplify/cli
       - name: Install Amplify CLI
         run: |
           npm install -g @aws-amplify/cli
